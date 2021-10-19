@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import Header from "./components/shared/Header/Header";
+import Footer from "./components/shared/Footer/Footer";
+import Home from './pages/Home/Home';
+import Cadastro from './pages/Cadastro/Cadastro';
+import TarefaView from './pages/TarefaView/TarefaView';
+import Edicao from './pages/Edicao/Edicao';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Switch>
+        <Route path="/" exact={true} component={Home}/>
+        <Route path="/cadastro" component={Cadastro}/>
+        <Route path="/view/:id" component={TarefaView}/>
+        <Route path="/edit/:id" component={Edicao}/>
+      </Switch>
+      <Footer/>
     </div>
   );
 }
